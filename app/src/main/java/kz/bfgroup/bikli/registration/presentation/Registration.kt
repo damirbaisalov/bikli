@@ -1,4 +1,4 @@
-package kz.bfgroup.bikli.registration
+package kz.bfgroup.bikli.registration.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

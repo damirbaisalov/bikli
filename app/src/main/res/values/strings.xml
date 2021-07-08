@@ -7,4 +7,5 @@
     <string name="activity_registration_name_edit_text">Ваше имя</string>
     <string name="activity_registration_phone_text_view">Номер телефона</string>
     <string name="activity_registration_phone_edit_text">Номер телефона</string>
+    <string name="registration_toolbar_reg_text_view">Регистрация</string>
 </resources>
