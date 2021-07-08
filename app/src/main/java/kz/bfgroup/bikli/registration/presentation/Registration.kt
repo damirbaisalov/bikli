@@ -53,6 +53,10 @@ class Registration: AppCompatActivity() {
 
     private fun turnOffVisibility(v : View) {
         v.visibility = View.GONE
+        if (v is EditText)
+        {
+            v.text.clear()
+        }
     }
 
     private fun turnOnVisibility(v : View) {
