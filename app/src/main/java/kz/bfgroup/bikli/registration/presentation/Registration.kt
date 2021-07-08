@@ -1,15 +1,19 @@
 package kz.bfgroup.bikli.registration.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
+import kz.bfgroup.bikli.MainActivity
 import kz.bfgroup.bikli.R
 
 class Registration: AppCompatActivity() {
 
+    private lateinit var nextButton : Button
     private lateinit var switchCompat: SwitchCompat
     private lateinit var flatNumberTextView: TextView
     private lateinit var flatFloorTextView: TextView
@@ -25,6 +29,11 @@ class Registration: AppCompatActivity() {
         switchCompat.setOnClickListener {
             homeOrFlat()
         }
+
+        nextButton.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
     }
 
     private fun bindViews() {
@@ -34,6 +43,7 @@ class Registration: AppCompatActivity() {
         flatNumberEditText = findViewById(R.id.activity_registration_flat_num_edit_text)
         flatFloorEditText = findViewById(R.id.activity_registration_flooredit_text)
         flatFloorTextView = findViewById(R.id.activity_registration_floor_text_view)
+        nextButton = findViewById(R.id.activity_registration_next_button)
     }
 
     private fun homeOrFlat() {
