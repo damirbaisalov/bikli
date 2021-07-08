@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MySwitch" parent="Theme.AppCompat.Light">
+        <!-- активное состояние (30% прозрачности для фона) -->
+        <item name="colorControlActivated">@color/primary_bikli_orange</item>
+
+        <!-- неактивное состояние ползунка -->
+        <item name="colorSwitchThumbNormal">@color/white</item>
+
+        <!-- цвет дорожки для неактивного состояния (30% прозрачности) -->
+        <item name="android:colorForeground">@android:color/darker_gray</item>
+    </style>
+
+    <style name="SplashScreenTheme" parent = "Theme.Bikli">
+        <item name="android:windowBackground">@drawable/splash_screen_bg</item>
+    </style>
+</resources>

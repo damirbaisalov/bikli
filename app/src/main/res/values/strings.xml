@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Bikli</string>
+    <string name="activity_registration_home">Дом</string>
+    <string name="activity_registration_address_text_view">Улица</string>
+    <string name="activity_registration_address_edit_text">Выберите Вашу улицу</string>
+    <string name="activity_registration_name_text_view">Имя</string>
+    <string name="activity_registration_name_edit_text">Ваше имя</string>
+    <string name="activity_registration_phone_text_view">Номер телефона</string>
+    <string name="activity_registration_phone_edit_text">Номер телефона</string>
+    <string name="registration_toolbar_reg_text_view">Регистрация</string>
+    <string name="activity_registration_reg_button">Регистрация</string>
+    <string name="activity_registration_next_button">Пропустить</string>
+    <string name="activity_registration_floor_edit_text">Этаж</string>
+    <string name="activity_registration_flat_edit_text">Номер квартиры</string>
+    <string name="activity_registration_floor_text_view">Этаж</string>
+    <string name="activity_registration_flat_text_view">Номер квартиры</string>
+    <string name="activity_registration_home_switch_compat">Частный Дом</string>
 </resources>
