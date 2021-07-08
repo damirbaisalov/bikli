@@ -11,4 +11,6 @@
     <color name="primary_bikli_orange">#FBA745</color>
     <color name="bikli_background">#E5E5E5</color>
     <color name="bikli_status_bar">#FFB155</color>
+    <color name="enabled_button_reg">#FFED4D</color>
+    <color name="disabled_button_reg">#1A888B94</color>
 </resources>

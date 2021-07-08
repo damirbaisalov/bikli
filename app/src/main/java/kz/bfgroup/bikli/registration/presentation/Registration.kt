@@ -28,6 +28,7 @@ class Registration: AppCompatActivity() {
     }
 
     private fun bindViews() {
+
         switchCompat = findViewById(R.id.activity_registration_switch_button)
         flatNumberTextView = findViewById(R.id.activity_registration_flat_num_text_view)
         flatNumberEditText = findViewById(R.id.activity_registration_flat_num_edit_text)
@@ -37,7 +38,7 @@ class Registration: AppCompatActivity() {
 
     private fun homeOrFlat() {
 
-        if (!switchCompat.isChecked) {
+        if (switchCompat.isChecked) {
             turnOffVisibility(flatFloorEditText)
             turnOffVisibility(flatFloorTextView)
             turnOffVisibility(flatNumberEditText)
