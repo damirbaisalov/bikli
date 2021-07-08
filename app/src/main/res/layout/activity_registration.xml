@@ -6,7 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:overScrollMode="never"
     android:clipToPadding="false"
-    android:background="@color/bikli_background">
+    android:background="@color/bikli_background"
+    tools:context=".registration.presentation.Registration">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -59,8 +60,9 @@
                 android:maxLines="1"
                 android:backgroundTint="@color/bikli_status_bar"
                 android:textCursorDrawable="@color/bikli_status_bar"
-                android:autofillHints=""
-                android:inputType="text" />
+                android:autofillHints="name"
+                android:inputType="text"
+                android:focusedByDefault="false"/>
 
             <TextView
                 android:id="@+id/activity_registration_telephone_text_view"
@@ -78,7 +80,7 @@
                 android:id="@+id/activity_registration_telephone_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints=""
+                android:autofillHints="telephone_number"
                 android:hint="@string/activity_registration_phone_edit_text"
                 android:inputType="text"
                 android:textColor="@color/black"
@@ -88,6 +90,7 @@
                 android:maxLines="1"
                 android:backgroundTint="@color/bikli_status_bar"
                 android:textCursorDrawable="@color/bikli_status_bar"
+                android:focusedByDefault="false"
                 />
 
             <TextView
@@ -106,7 +109,7 @@
                 android:id="@+id/activity_registration_address_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints=""
+                android:autofillHints="user_address"
                 android:hint="@string/activity_registration_address_edit_text"
                 android:inputType="text"
                 android:textColor="@color/black"
@@ -116,6 +119,7 @@
                 android:maxLines="1"
                 android:backgroundTint="@color/bikli_status_bar"
                 android:textCursorDrawable="@color/bikli_status_bar"
+                android:focusedByDefault="false"
                 />
 
             <TextView
@@ -134,7 +138,7 @@
                 android:id="@+id/activity_registration_home_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints=""
+                android:autofillHints="user_home"
                 android:hint="@string/activity_registration_home"
                 android:inputType="text"
                 android:textColor="@color/black"
@@ -144,6 +148,7 @@
                 android:maxLines="1"
                 android:backgroundTint="@color/bikli_status_bar"
                 android:textCursorDrawable="@color/bikli_status_bar"
+                android:focusedByDefault="false"
                 />
 
             <androidx.appcompat.widget.SwitchCompat
@@ -176,7 +181,7 @@
                 android:id="@+id/activity_registration_flat_num_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints=""
+                android:autofillHints="user_flat_number"
                 android:hint="@string/activity_registration_flat_edit_text"
                 android:inputType="text"
                 android:textColor="@color/black"
@@ -186,6 +191,7 @@
                 android:maxLines="1"
                 android:backgroundTint="@color/bikli_status_bar"
                 android:textCursorDrawable="@color/bikli_status_bar"
+                android:focusedByDefault="false"
                 />
 
             <TextView
@@ -204,7 +210,7 @@
                 android:id="@+id/activity_registration_flooredit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints=""
+                android:autofillHints="user_floor"
                 android:hint="@string/activity_registration_floor_edit_text"
                 android:inputType="text"
                 android:textColor="@color/black"
@@ -214,6 +220,7 @@
                 android:maxLines="1"
                 android:backgroundTint="@color/bikli_status_bar"
                 android:textCursorDrawable="@color/bikli_status_bar"
+                android:focusedByDefault="false"
                 />
 
 

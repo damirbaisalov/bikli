@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="MySwitch" parent="Theme.AppCompat.Light">
+    <style name="MySwitch" parent="Theme.Bikli">
         <!-- активное состояние (30% прозрачности для фона) -->
         <item name="colorControlActivated">@color/primary_bikli_orange</item>
 

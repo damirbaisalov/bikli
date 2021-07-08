@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Bikli" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Bikli" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/bikli_status_bar</item>
         <item name="colorPrimaryVariant">@color/bikli_status_bar</item>
