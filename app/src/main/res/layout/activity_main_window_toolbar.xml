@@ -34,5 +34,16 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/home_fragment_toolbar_pavlodar_text"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:fontFamily="@font/roboto_medium"
+        android:layout_gravity="end"
+        android:layout_marginHorizontal="16dp"
+        />
+
 
 </androidx.appcompat.widget.Toolbar>
