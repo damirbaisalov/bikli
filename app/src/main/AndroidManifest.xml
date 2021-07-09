@@ -9,9 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bikli">
-        <activity
-            android:name=".MainActivity2"
-            android:label="@string/title_activity_main2"></activity>
+
         <activity
             android:name=".MainActivity"
             android:theme="@style/SplashScreenTheme">
@@ -21,6 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".registration.presentation.Registration" />
         <activity android:name=".main_window.presentation.MainWindow" />
     </application>
