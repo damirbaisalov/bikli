@@ -7,5 +7,5 @@ import retrofit2.http.GET
 interface ApiClient {
 
     @GET("index.php?method=akcii.SpisokAkcii")
-    fun getPromotions2(): Call<ResponseApiData>
+    fun getPromotions(): Call<ResponseApiData>
 }

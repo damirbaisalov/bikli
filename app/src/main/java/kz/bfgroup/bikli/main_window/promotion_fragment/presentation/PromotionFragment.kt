@@ -74,7 +74,7 @@ class PromotionFragment: Fragment() {
 
     private fun loadApiData() {
         swipeRefreshLayout.isRefreshing = true
-        ApiRetrofit.getApiClient().getPromotions2().enqueue(object : Callback<ResponseApiData> {
+        ApiRetrofit.getApiClient().getPromotions().enqueue(object : Callback<ResponseApiData> {
             override fun onResponse(call: Call<ResponseApiData>, response: Response<ResponseApiData>) {
                 Log.d("promotion_list", response.body()!!.response.toString())
                 Log.d("promotion_list", response.body()!!.toString())
