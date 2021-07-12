@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kz.bfgroup.bikli">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,6 +24,7 @@
 
         <activity android:name=".registration.presentation.Registration" />
         <activity android:name=".main_window.presentation.MainWindow" />
+
     </application>
 
 </manifest>
