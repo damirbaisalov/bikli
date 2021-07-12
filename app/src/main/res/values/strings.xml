@@ -15,4 +15,19 @@
     <string name="activity_registration_floor_text_view">Этаж</string>
     <string name="activity_registration_flat_text_view">Номер квартиры</string>
     <string name="activity_registration_home_switch_compat">Частный Дом</string>
+    <string name="item1_home">Рестораны</string>
+    <string name="item2_promotions">Акции</string>
+    <string name="item3_user">Кабинет</string>
+    <string name="item4_history">История</string>
+    <string name="item5_cart">Корзина</string>
+    <string name="activity_main_window_bikli_food_text">BIKLI-FOOD</string>
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="home_fragment_toolbar_pavlodar_text">Павлодар</string>
+    <string name="fragment_home_empty_cart_text">Ваша корзина пуста</string>
+    <string name="home_fragment_bikli_helper_text">Здесь собраны рестораны с самым высоким рейтингом, уверен ты найдешь то, что нужно именно тебе!</string>
+    <string name="fragment_promotion_bikli_helper_text">Все самые горячие акции ЗДЕСЬ!</string>
+    <string name="fragment_history_bikli_helper_text">Здесь будет храниться Ваша история заказов</string>
 </resources>
