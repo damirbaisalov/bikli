@@ -5,21 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:elevation="4dp"
     android:background="@drawable/bg_promotion_item">
 
-    <ImageView
-        android:id="@+id/promotion_image"
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        android:layout_marginTop="7dp"
-        />
+        app:cardCornerRadius="4dp"
+        >
+
+        <ImageView
+            android:id="@+id/promotion_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            />
+
+    </androidx.cardview.widget.CardView>
 
     <View
         android:id="@+id/line_after_promotion_image"
         android:layout_width="match_parent"
-        android:layout_marginTop="1dp"
         android:layout_height="1dp"
         android:background="@android:color/darker_gray"
         />
