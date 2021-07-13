@@ -8,7 +8,6 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
-import kz.bfgroup.bikli.MainActivity
 import kz.bfgroup.bikli.R
 import kz.bfgroup.bikli.main_window.presentation.MainWindow
 
