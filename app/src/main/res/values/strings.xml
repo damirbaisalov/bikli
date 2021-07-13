@@ -30,4 +30,6 @@
     <string name="home_fragment_bikli_helper_text">Здесь собраны рестораны с самым высоким рейтингом, уверен ты найдешь то, что нужно именно тебе!</string>
     <string name="fragment_promotion_bikli_helper_text">Все самые горячие акции ЗДЕСЬ!</string>
     <string name="fragment_history_bikli_helper_text">Здесь будет храниться Ваша история заказов</string>
+    <string name="home_fragment_for_you_text">Для Вас</string>
+    <string name="home_fragment_cafes_text">Рестораны</string>
 </resources>

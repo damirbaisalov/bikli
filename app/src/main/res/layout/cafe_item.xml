@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_promotion_item"
+    android:paddingBottom="10dp">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cafe_logo_round"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        app:cardCornerRadius="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+    <ImageView
+        android:id="@+id/cafe_logo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@id/cafe_logo_round"
+        />
+
+    <TextView
+        android:id="@+id/cafe_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Пиццерия ШашлыкЯн"
+        android:fontFamily="@font/roboto_bold"
+        android:textSize="28sp"
+        android:layout_marginHorizontal="16dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/cafe_logo_round"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/cafe_min_sum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="от 2000"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="24sp"
+        android:layout_marginHorizontal="16dp"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/cafe_name"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/bg_home_fragment_cafe_text_view"
+        android:layout_marginVertical="10dp"
+        android:paddingHorizontal="10dp"
+        android:paddingBottom="2dp"
+        android:gravity="center_horizontal"
+        />
+
+
+    <TextView
+        android:id="@+id/cafe_raiting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="24sp"
+        android:layout_marginHorizontal="16dp"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/cafe_name"
+        app:layout_constraintStart_toEndOf="@id/cafe_min_sum"
+        android:background="@drawable/bg_home_fragment_cafe_text_view"
+        android:layout_marginVertical="10dp"
+        android:paddingHorizontal="10dp"
+        android:gravity="center_horizontal"
+        android:paddingBottom="2dp"
+        android:drawableStart="@drawable/ic_home_fragment_star_raiting_logo"
+        android:drawablePadding="10dp"
+        />
+
+    <TextView
+        android:id="@+id/cafe_delivery_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="40 мин"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="24sp"
+        android:layout_marginHorizontal="16dp"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/cafe_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/bg_home_fragment_cafe_text_view"
+        android:layout_marginVertical="10dp"
+        android:drawableStart="@drawable/ic_time_delivery_logo"
+        android:paddingHorizontal="10dp"
+        android:gravity="center_horizontal"
+        android:drawablePadding="15dp"
+        android:paddingBottom="2dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
