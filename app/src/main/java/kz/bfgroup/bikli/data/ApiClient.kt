@@ -8,4 +8,7 @@ interface ApiClient {
 
     @GET("index.php?method=akcii.SpisokAkcii")
     fun getPromotions(): Call<ResponseApiData>
+
+//    @GET("index.php?method=cafe.cafeList")
+//    fun getCafesList(): Call<ResponseCafeApiData>
 }
