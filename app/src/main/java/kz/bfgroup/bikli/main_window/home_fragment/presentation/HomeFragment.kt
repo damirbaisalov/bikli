@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.facebook.shimmer.ShimmerFrameLayout
 import kz.bfgroup.bikli.R
 import kz.bfgroup.bikli.data.ApiRetrofit
 import kz.bfgroup.bikli.main_window.home_fragment.models.CafeApiData
@@ -26,11 +27,12 @@ class HomeFragment: Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private var cafeAdapter: CafeAdapter?=null
-    private lateinit var progressBar: ProgressBar
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
     private lateinit var searchView: SearchView
     private var searchingCafeList: List<CafeApiData> = listOf()
+
+    private lateinit var shimmerFrameLayout: ShimmerFrameLayout
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,16 +46,23 @@ class HomeFragment: Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(viewHome.context, LinearLayoutManager.VERTICAL, false)
         cafeAdapter = CafeAdapter()
         recyclerView.adapter = cafeAdapter
-        progressBar = viewHome.findViewById(R.id.cafe_progress_bar)
-        progressBar.visibility = View.VISIBLE
 
         swipeRefreshLayout = viewHome.findViewById(R.id.cafe_swipe_refresh)
         swipeRefreshLayout.setOnRefreshListener {
             cafeAdapter?.clearAll()
+
+            shimmerFrameLayout.startShimmerAnimation()
+            shimmerFrameLayout.visibility = View.VISIBLE
+            recyclerView.visibility = View.GONE
+
             loadApiData()
         }
 
+        swipeRefreshLayout.
+
         searchView = viewHome.findViewById(R.id.home_fragment_search_view)
+
+        shimmerFrameLayout = viewHome.findViewById(R.id.home_fragment_shimmer_layout)
 
         bikliHelperOn = viewHome.findViewById(R.id.fragment_home_bikli_helper_linear_layout)
         bikliHelperOff = viewHome.findViewById(R.id.fragment_home_hand_help_linear_layout)
@@ -85,7 +94,11 @@ class HomeFragment: Fragment() {
                 Log.d("cafe_list", response.body()!!.response.toString())
                 Log.d("cafe_list", response.body()!!.toString())
                 swipeRefreshLayout.isRefreshing = false
-                progressBar.visibility = View.GONE
+
+                shimmerFrameLayout.stopShimmerAnimation()
+                shimmerFrameLayout.visibility = View.GONE
+                recyclerView.visibility = View.VISIBLE
+
                 if (response.isSuccessful) {
 
                     val cafeApiDataResponseList: MutableList<CafeApiData> = mutableListOf()
@@ -102,8 +115,8 @@ class HomeFragment: Fragment() {
             override fun onFailure(call: Call<ResponseCafeApiData>, t: Throwable) {
                 Log.d("cafe_list_failure", t.message.toString())
                 Toast.makeText(activity, t.message, Toast.LENGTH_LONG).show()
-                progressBar.visibility = View.VISIBLE
                 swipeRefreshLayout.isRefreshing = false
+                shimmerFrameLayout.visibility = View.GONE
             }
         })
     }
@@ -150,5 +163,15 @@ class HomeFragment: Fragment() {
             bikliHelperOff.visibility = View.VISIBLE
             bikliHelperOn.visibility = View.GONE
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        shimmerFrameLayout.startShimmerAnimation()
+    }
+
+    override fun onPause() {
+        shimmerFrameLayout.stopShimmerAnimation()
+        super.onPause()
     }
 }

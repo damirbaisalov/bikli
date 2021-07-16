@@ -15,4 +15,5 @@
     <color name="disabled_button_reg">#1A888B94</color>
     <color name="helper_hand_color">#335D75</color>
     <color name="helper_text_color">#CE0203</color>
+    <color name="colorGrey">#dddddd</color>
 </resources>
