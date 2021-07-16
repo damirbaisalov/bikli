@@ -58,8 +58,6 @@ class HomeFragment: Fragment() {
             loadApiData()
         }
 
-        swipeRefreshLayout.
-
         searchView = viewHome.findViewById(R.id.home_fragment_search_view)
 
         shimmerFrameLayout = viewHome.findViewById(R.id.home_fragment_shimmer_layout)
