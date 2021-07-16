@@ -123,10 +123,18 @@ class HomeFragment: Fragment() {
 
                 val queryText = p0?.lowercase()
 
-                cafeAdapter?.filter(queryText!!)
+//                cafeAdapter?.filter(queryText!!)
+//
+//                if (queryText?.isEmpty()!!)
+//                    cafeAdapter?.setList(searchingCafeList)
 
-                if (queryText?.isEmpty()!!)
-                    cafeAdapter?.setList(searchingCafeList)
+                val newCafeList : MutableList<CafeApiData> = mutableListOf()
+                for (q in searchingCafeList) {
+                    if (q.name?.lowercase()?.contains(queryText!!)!!) {
+                        newCafeList.add(q)
+                    }
+                }
+                cafeAdapter?.setList(newCafeList)
 
                 return false
             }
