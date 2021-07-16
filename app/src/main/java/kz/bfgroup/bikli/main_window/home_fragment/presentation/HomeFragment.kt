@@ -5,9 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.ProgressBar
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,6 +29,9 @@ class HomeFragment: Fragment() {
     private lateinit var progressBar: ProgressBar
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
+    private lateinit var searchView: SearchView
+    private var searchingCafeList: List<CafeApiData> = listOf()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -52,11 +53,15 @@ class HomeFragment: Fragment() {
             loadApiData()
         }
 
+        searchView = viewHome.findViewById(R.id.home_fragment_search_view)
+
         bikliHelperOn = viewHome.findViewById(R.id.fragment_home_bikli_helper_linear_layout)
         bikliHelperOff = viewHome.findViewById(R.id.fragment_home_hand_help_linear_layout)
         initViews()
 
         loadApiData()
+
+        queryInSearchView()
 
         return viewHome
     }
@@ -87,6 +92,8 @@ class HomeFragment: Fragment() {
                     val list = response.body()!!
 
                     cafeApiDataResponseList.addAll(list.response)
+                    searchingCafeList = list.response
+
                     cafeAdapter?.setList(cafeApiDataResponseList)
 
                 }
@@ -97,6 +104,31 @@ class HomeFragment: Fragment() {
                 Toast.makeText(activity, t.message, Toast.LENGTH_LONG).show()
                 progressBar.visibility = View.VISIBLE
                 swipeRefreshLayout.isRefreshing = false
+            }
+        })
+    }
+
+    private fun queryInSearchView() {
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                searchView.clearFocus()
+                val queryText = p0?.lowercase()
+
+                cafeAdapter?.filter(queryText!!)
+
+                return false
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+
+                val queryText = p0?.lowercase()
+
+                cafeAdapter?.filter(queryText!!)
+
+                if (queryText?.isEmpty()!!)
+                    cafeAdapter?.setList(searchingCafeList)
+
+                return false
             }
         })
     }

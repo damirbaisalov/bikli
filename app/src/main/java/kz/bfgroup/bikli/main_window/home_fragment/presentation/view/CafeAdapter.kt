@@ -8,7 +8,7 @@ import kz.bfgroup.bikli.main_window.home_fragment.models.CafeApiData
 
 class CafeAdapter: RecyclerView.Adapter<CafeViewHolder>() {
 
-    private val dataList: MutableList<CafeApiData> = mutableListOf()
+    private var dataList: MutableList<CafeApiData> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CafeViewHolder {
 
@@ -31,4 +31,20 @@ class CafeAdapter: RecyclerView.Adapter<CafeViewHolder>() {
         (dataList as? ArrayList<CafeApiData>)?.clear()
         notifyDataSetChanged()
     }
+
+    fun filter(name: String) {
+        val temp : MutableList<CafeApiData> = mutableListOf()
+        for (d in dataList) {
+            if (d.name?.lowercase()?.contains(name)!!) {
+                temp.add(d)
+            }
+        }
+        updateList(temp)
+    }
+
+    private fun updateList(list : List<CafeApiData>) {
+        dataList = list as MutableList<CafeApiData>
+        notifyDataSetChanged()
+    }
+
 }
