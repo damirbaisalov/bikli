@@ -7,7 +7,6 @@
 
     <include
         layout="@layout/cafe_item"
-        android:id="@+id/cafe_item_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
