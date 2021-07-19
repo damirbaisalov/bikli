@@ -80,4 +80,15 @@ class MainWindow : AppCompatActivity() {
         fragmentTransaction.replace(R.id.main_window_frame_layout, fragment)
         fragmentTransaction.commit()
     }
+
+    override fun onBackPressed() {
+
+        if (bottomNavigationView.selectedItemId==R.id.item1) {
+            super.onBackPressed()
+            finish()
+        } else {
+            bottomNavigationView.selectedItemId = R.id.item1
+        }
+
+    }
 }
