@@ -8,7 +8,6 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
-import kz.bfgroup.bikli.MainActivity
 import kz.bfgroup.bikli.R
 import kz.bfgroup.bikli.main_window.presentation.MainWindow
 
@@ -40,10 +39,15 @@ class Registration: AppCompatActivity() {
     private fun bindViews() {
 
         switchCompat = findViewById(R.id.activity_registration_switch_button)
+        switchCompat.isChecked = true
         flatNumberTextView = findViewById(R.id.activity_registration_flat_num_text_view)
         flatNumberEditText = findViewById(R.id.activity_registration_flat_num_edit_text)
         flatFloorEditText = findViewById(R.id.activity_registration_flooredit_text)
         flatFloorTextView = findViewById(R.id.activity_registration_floor_text_view)
+        turnOffVisibility(flatFloorEditText)
+        turnOffVisibility(flatFloorTextView)
+        turnOffVisibility(flatNumberEditText)
+        turnOffVisibility(flatNumberTextView)
         nextButton = findViewById(R.id.activity_registration_next_button)
     }
 

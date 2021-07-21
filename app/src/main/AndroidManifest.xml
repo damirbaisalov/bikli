@@ -23,7 +23,8 @@
         </activity>
 
         <activity android:name=".registration.presentation.Registration" />
-        <activity android:name=".main_window.presentation.MainWindow" />
+        <activity android:name=".main_window.presentation.MainWindow"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustNothing"/>
 
     </application>
 
