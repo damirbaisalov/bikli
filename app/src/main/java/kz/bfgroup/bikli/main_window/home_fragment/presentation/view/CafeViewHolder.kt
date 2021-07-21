@@ -43,8 +43,8 @@ class CafeViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
 //      val formatter = DateTimeFormatter.ofPattern("yy-mm-dd HH:mm:ss")
 
-        val cafeEndTime = cafeApiData.timeend?.substring(11,19)
-        val cafeNowTime = cafeApiData.now?.substring(11,19)
+//        val cafeEndTime = cafeApiData.timeend?.substring(11,19)
+//        val cafeNowTime = cafeApiData.now?.substring(11,19)
 
 //        val cafeEndTimeParsed = ZonedDateTime.parse(cafeEndTime, formatter)
 //        val cafeNowTimeParsed = ZonedDateTime.parse(cafeNowTime, formatter)
