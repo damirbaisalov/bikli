@@ -14,12 +14,9 @@ import kz.bfgroup.bikli.R
 import kz.bfgroup.bikli.data.ApiRetrofit
 import kz.bfgroup.bikli.main_window.presentation.MainWindow
 import kz.bfgroup.bikli.main_window.user_fragment.models.ResponseUserInfo
-import kz.bfgroup.bikli.main_window.user_fragment.models.UserInfo
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.Field
 
 class Registration: AppCompatActivity() {
 
@@ -35,7 +32,6 @@ class Registration: AppCompatActivity() {
     private lateinit var flatNumberEditText: EditText
     private lateinit var flatFloorEditText: EditText
 
-    private lateinit var userInfo: UserInfo
     private lateinit var fields: Map<String,String>
 
     private lateinit var registerButton: Button
@@ -89,15 +85,6 @@ class Registration: AppCompatActivity() {
         userPhoneNumberEditText = findViewById(R.id.activity_registration_telephone_edit_text)
         userAddressEditText = findViewById(R.id.activity_registration_address_edit_text)
         userHomeEditText = findViewById(R.id.activity_registration_home_edit_text)
-
-        userInfo = UserInfo(
-            phone_user = userPhoneNumberEditText.text.toString(),
-            name_user = userNameEditText.text.toString(),
-            adress_user =  userAddressEditText.text.toString(),
-            apartment_user = userHomeEditText.text.toString(),
-            floor = flatFloorEditText.text.toString(),
-            street = flatNumberEditText.text.toString()
-        )
     }
 
     private fun registerUser() {
