@@ -60,8 +60,10 @@ class Registration: AppCompatActivity() {
                 "floor" to flatFloorEditText.text.toString(),
                 "street" to flatNumberEditText.text.toString()
             )
-            registerUser()
+//            registerUser()
             Toast.makeText(this@Registration, fields.toString(), Toast.LENGTH_LONG).show()
+            val dialog = CodeDialogFragment()
+            dialog.show(supportFragmentManager, "codeDialog")
         }
     }
 
