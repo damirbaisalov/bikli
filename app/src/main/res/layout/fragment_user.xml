@@ -123,16 +123,18 @@
                 >
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:text="Кэшбек"
                     android:textSize="18sp"
+                    android:gravity="center_vertical"
                     android:layout_weight="6"
                     android:fontFamily="@font/roboto_medium"
                     android:textColor="@color/primary_bikli_orange"
                     />
 
                 <TextView
+                    android:id="@+id/user_fragment_cashback"
                     android:layout_width="100dp"
                     android:layout_height="30dp"
                     android:layout_gravity="end"
@@ -166,9 +168,10 @@
                 >
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:text="Баллы"
+                    android:gravity="center_vertical"
                     android:textSize="18sp"
                     android:layout_weight="6"
                     android:fontFamily="@font/roboto_medium"
@@ -176,6 +179,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/fragment_user_balans"
                     android:layout_width="100dp"
                     android:layout_height="30dp"
                     android:layout_gravity="end"
