@@ -134,7 +134,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/user_fragment_cashback"
+                    android:id="@+id/fragment_user_cashback"
                     android:layout_width="100dp"
                     android:layout_height="30dp"
                     android:layout_gravity="end"
