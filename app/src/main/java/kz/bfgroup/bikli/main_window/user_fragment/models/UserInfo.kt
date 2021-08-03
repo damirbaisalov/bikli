@@ -23,6 +23,8 @@ data class UserInfo(
     val floor: String?,
     @JsonProperty("entrance")
     val entrance: String?,
+    @JsonProperty("cashback")
+    val cashback: String?,
     @JsonProperty("balans")
     val balans: String?,
     @JsonProperty("referalKey")
@@ -31,7 +33,4 @@ data class UserInfo(
     val countReferalUser: String?,
     @JsonProperty("superAdmin")
     val superAdmin: String?,
-
-
-
 )
