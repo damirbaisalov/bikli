@@ -97,6 +97,9 @@ class CodeDialogFragment: DialogFragment() {
 
                     if (token!=null){
                         saveAccessToken(token)
+//                        dismiss()
+                        val successRegDialog = SuccessRegDialogFragment()
+                        successRegDialog.show(childFragmentManager, "successRegDialog")
                     }
 
                 }
