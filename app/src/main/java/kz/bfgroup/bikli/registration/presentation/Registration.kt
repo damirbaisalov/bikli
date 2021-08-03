@@ -1,6 +1,8 @@
 package kz.bfgroup.bikli.registration.presentation
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -18,6 +20,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+const val MY_APP_REGISTRATION = "MY_APP_REGISTRATION"
+const val USER_TELEPHONE = "USER_TELEPHONE"
 class Registration: AppCompatActivity() {
 
     private lateinit var nextButton : Button
@@ -60,8 +64,9 @@ class Registration: AppCompatActivity() {
                 "floor" to flatFloorEditText.text.toString(),
                 "street" to flatNumberEditText.text.toString()
             )
+            saveTelephoneNumber(userPhoneNumberEditText.text.toString())
             registerUser()
-            Toast.makeText(this@Registration, fields.toString(), Toast.LENGTH_LONG).show()
+//            Toast.makeText(this@Registration, fields.toString(), Toast.LENGTH_LONG).show()
             val dialog = CodeDialogFragment()
             dialog.show(supportFragmentManager, "codeDialog")
         }
@@ -131,5 +136,14 @@ class Registration: AppCompatActivity() {
 
     private fun turnOnVisibility(v : View) {
         v.visibility = View.VISIBLE
+    }
+
+    private fun saveTelephoneNumber(telephone: String) {
+        val sharedPref = this.getSharedPreferences(MY_APP_REGISTRATION, Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = sharedPref.edit()
+
+        editor.putString(USER_TELEPHONE, telephone)
+        editor.apply()
+
     }
 }

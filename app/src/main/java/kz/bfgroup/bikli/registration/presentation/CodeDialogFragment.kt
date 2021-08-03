@@ -65,7 +65,7 @@ class CodeDialogFragment: DialogFragment() {
                     val codeConverted : String = code1EditText.text.toString() + code2EditText.text.toString() +
                         code3EditText.text.toString() + code4EditText.text.toString()
                     fields = mutableMapOf(
-                        "phone_user" to "+77083046340",
+                        "phone_user" to getSavedTelephone(),
                         "code" to codeConverted
                     )
                     loginUser()
@@ -146,6 +146,15 @@ class CodeDialogFragment: DialogFragment() {
         editor.putString(GENERATED_ACCESS_TOKEN, token)
         editor.apply()
 
+    }
+
+    private fun getSavedTelephone(): String {
+        val sharedPreferences: SharedPreferences = rootView.context.getSharedPreferences(
+            MY_APP_REGISTRATION,
+            Context.MODE_PRIVATE
+        )
+
+        return sharedPreferences.getString(USER_TELEPHONE, "default") ?: "default"
     }
 
 }
