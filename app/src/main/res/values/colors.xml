@@ -17,4 +17,6 @@
     <color name="helper_text_color">#CE0203</color>
     <color name="colorGrey">#dddddd</color>
     <color name="cafe_is_closed">#D9ffffff</color>
+    <color name="save_button">#4CD964</color>
+    <color name="delete_button">#FF3B30</color>
 </resources>

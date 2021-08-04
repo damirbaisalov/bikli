@@ -37,6 +37,17 @@ class UserFragment: Fragment() {
     private lateinit var cashbackTextView: TextView
     private lateinit var balansTextView: TextView
 
+    private lateinit var goToUserSettingsButton: LinearLayout
+    private lateinit var goToUserAddressListButton: LinearLayout
+
+    private lateinit var nameResult : String
+    private lateinit var phoneResult : String
+    private lateinit var addressResult : String
+    private lateinit var homeResult : String
+    private lateinit var flatNumResult : String
+    private lateinit var floorResult : String
+    private lateinit var userId: String
+
     private lateinit var token : String
 
     override fun onCreateView(
@@ -65,6 +76,24 @@ class UserFragment: Fragment() {
         authorizationButton.setOnClickListener {
 
         }
+
+        goToUserSettingsButton.setOnClickListener {
+            val intent = Intent(viewUser.context, UserSettings::class.java)
+            intent.putExtra("name", nameResult)
+            intent.putExtra("phone", phoneResult)
+            intent.putExtra("address", addressResult)
+            intent.putExtra("home", homeResult)
+            intent.putExtra("flatNum", flatNumResult)
+            intent.putExtra("floor", floorResult)
+            startActivity(intent)
+        }
+
+        goToUserAddressListButton.setOnClickListener {
+            val intent = Intent(viewUser.context, UserAddressList::class.java)
+            intent.putExtra("user_id", userId)
+            startActivity(intent)
+        }
+
         token = getSavedToken()
 //        Toast.makeText(viewUser.context,token,Toast.LENGTH_LONG).show()
         loadUserData()
@@ -83,6 +112,9 @@ class UserFragment: Fragment() {
         userNameTextView = viewUser.findViewById(R.id.fragment_user_username)
         cashbackTextView = viewUser.findViewById(R.id.fragment_user_cashback)
         balansTextView = viewUser.findViewById(R.id.fragment_user_balans)
+
+        goToUserSettingsButton = viewUser.findViewById(R.id.fragment_user_settings_button)
+        goToUserAddressListButton = viewUser.findViewById(R.id.fragment_user_address_list_button)
     }
 
     private fun loadUserData() {
@@ -92,9 +124,16 @@ class UserFragment: Fragment() {
                 Log.d("user_get_data", response.body().toString())
 
                 if (response.isSuccessful) {
-                    val nameResult = response.body()?.response?.user?.name!!
+                    nameResult = response.body()?.response?.user?.name!!
                     val cashBackResult = response.body()?.response?.user?.cashback!! + "%"
                     val balansResult = response.body()?.response?.user?.balans!!
+
+                    phoneResult = response.body()?.response?.user?.phone!!
+                    addressResult = response.body()?.response?.user?.adress!!
+                    homeResult = response.body()?.response?.user?.street!!
+                    flatNumResult = response.body()?.response?.user?.apartment!!
+                    floorResult = response.body()?.response?.user?.floor!!
+                    userId = response.body()?.response?.user?.id!!
 
                     userNameTextView.text = nameResult
                     cashbackTextView.text = cashBackResult
@@ -117,5 +156,10 @@ class UserFragment: Fragment() {
         )
 
         return sharedPreferences.getString(GENERATED_ACCESS_TOKEN, "default") ?: "default"
+    }
+
+    override fun onStart() {
+        super.onStart()
+        loadUserData()
     }
 }
