@@ -23,6 +23,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+const val MY_APP_USER_FRAGMENT = "MY_APP_USER_FRAGMENT"
+const val USER_ID = "USER_ID"
 class UserFragment: Fragment() {
 
     private lateinit var viewUser : View
@@ -124,9 +126,11 @@ class UserFragment: Fragment() {
                 Log.d("user_get_data", response.body().toString())
 
                 if (response.isSuccessful) {
+
                     nameResult = response.body()?.response?.user?.name!!
                     val cashBackResult = response.body()?.response?.user?.cashback!! + "%"
                     val balansResult = response.body()?.response?.user?.balans!!
+
 
                     phoneResult = response.body()?.response?.user?.phone!!
                     addressResult = response.body()?.response?.user?.adress!!
@@ -138,6 +142,8 @@ class UserFragment: Fragment() {
                     userNameTextView.text = nameResult
                     cashbackTextView.text = cashBackResult
                     balansTextView.text = balansResult
+
+                    saveUserId(userId)
 
                 }
             }
@@ -156,6 +162,15 @@ class UserFragment: Fragment() {
         )
 
         return sharedPreferences.getString(GENERATED_ACCESS_TOKEN, "default") ?: "default"
+    }
+
+    private fun saveUserId(userId: String) {
+        val sharedPref = viewUser.context.getSharedPreferences(MY_APP_USER_FRAGMENT, Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = sharedPref.edit()
+
+        editor.putString(USER_ID, userId)
+        editor.apply()
+
     }
 
     override fun onStart() {

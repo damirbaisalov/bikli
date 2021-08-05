@@ -103,7 +103,9 @@ class UserAddressUpdate : AppCompatActivity() {
                 Log.d("user_set_address_data", response.body().toString())
 
                 if (response.isSuccessful) {
-                    finish()
+//                    finish()
+                    val dialog = SuccessInfoDialogFragment()
+                    dialog.show(supportFragmentManager, "successInfoDialog")
                 }
             }
 
@@ -121,7 +123,9 @@ class UserAddressUpdate : AppCompatActivity() {
                 Log.d("user_del_address_data", response.body().toString())
 
                 if (response.isSuccessful) {
-                    finish()
+//                    finish()
+                    val dialog = SuccessInfoDialogFragment()
+                    dialog.show(supportFragmentManager, "successInfoDialog")
                 }
             }
 

@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import kz.bfgroup.bikli.R
 import kz.bfgroup.bikli.data.ApiRetrofit
+import kz.bfgroup.bikli.registration.presentation.CodeDialogFragment
 import kz.bfgroup.bikli.registration.presentation.GENERATED_ACCESS_TOKEN
 import kz.bfgroup.bikli.registration.presentation.MY_APP
 import okhttp3.ResponseBody
@@ -88,7 +89,9 @@ class UserSettings : AppCompatActivity() {
                 Log.d("user_set_data", response.body().toString())
 
                 if (response.isSuccessful) {
-                    finish()
+//                    finish()
+                    val dialog = SuccessInfoDialogFragment()
+                    dialog.show(supportFragmentManager, "successInfoDialog")
                 }
             }
 

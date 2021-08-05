@@ -71,7 +71,9 @@ class UserAddAddress : AppCompatActivity() {
                 Log.d("user_add_address_data", response.body().toString())
 
                 if (response.isSuccessful) {
-                    finish()
+//                    finish()
+                    val dialog = SuccessInfoDialogFragment()
+                    dialog.show(supportFragmentManager, "successInfoDialog")
                 }
             }
 
