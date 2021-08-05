@@ -22,6 +22,8 @@ import retrofit2.Response
 
 class HomeFragment: Fragment() {
 
+    private lateinit var viewHome: View
+
     private lateinit var bikliHelperOn: LinearLayout
     private lateinit var bikliHelperOff: LinearLayout
 
@@ -40,14 +42,10 @@ class HomeFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val viewHome = inflater.inflate(R.layout.fragment_home, container, false)
+        viewHome = inflater.inflate(R.layout.fragment_home, container, false)
 
-        recyclerView = viewHome.findViewById(R.id.home_fragment_recycler_view)
-        recyclerView.layoutManager = LinearLayoutManager(viewHome.context, LinearLayoutManager.VERTICAL, false)
-        cafeAdapter = CafeAdapter()
-        recyclerView.adapter = cafeAdapter
+        initViews()
 
-        swipeRefreshLayout = viewHome.findViewById(R.id.cafe_swipe_refresh)
         swipeRefreshLayout.setOnRefreshListener {
             cafeAdapter?.clearAll()
 
@@ -58,14 +56,6 @@ class HomeFragment: Fragment() {
             loadApiData()
         }
 
-        searchView = viewHome.findViewById(R.id.home_fragment_search_view)
-
-        shimmerFrameLayout = viewHome.findViewById(R.id.home_fragment_shimmer_layout)
-
-        bikliHelperOn = viewHome.findViewById(R.id.fragment_home_bikli_helper_linear_layout)
-        bikliHelperOff = viewHome.findViewById(R.id.fragment_home_hand_help_linear_layout)
-        initViews()
-
         loadApiData()
 
         queryInSearchView()
@@ -74,6 +64,20 @@ class HomeFragment: Fragment() {
     }
 
     private fun initViews() {
+
+        swipeRefreshLayout = viewHome.findViewById(R.id.cafe_swipe_refresh)
+
+        recyclerView = viewHome.findViewById(R.id.home_fragment_recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(viewHome.context, LinearLayoutManager.VERTICAL, false)
+        cafeAdapter = CafeAdapter()
+        recyclerView.adapter = cafeAdapter
+
+        searchView = viewHome.findViewById(R.id.home_fragment_search_view)
+
+        shimmerFrameLayout = viewHome.findViewById(R.id.home_fragment_shimmer_layout)
+
+        bikliHelperOn = viewHome.findViewById(R.id.fragment_home_bikli_helper_linear_layout)
+        bikliHelperOff = viewHome.findViewById(R.id.fragment_home_hand_help_linear_layout)
 
         bikliHelperOn.visibility = View.GONE
         bikliHelperOff.setOnClickListener {
