@@ -1,6 +1,7 @@
 package kz.bfgroup.bikli.data
 
 import kz.bfgroup.bikli.main_window.home_fragment.models.ResponseCafeApiData
+import kz.bfgroup.bikli.main_window.home_fragment.models.ResponseCategory
 import kz.bfgroup.bikli.main_window.promotion_fragment.models.ResponseApiData
 import kz.bfgroup.bikli.main_window.user_fragment.models.ResponseAddress
 import kz.bfgroup.bikli.main_window.user_fragment.models.ResponseAddressUpdate
@@ -54,4 +55,8 @@ interface ApiClient {
     @FormUrlEncoded
     @POST("index.php?method=user.adress.delete")
     fun userDeleteAddress(@Field("id") id: String) : Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("index.php?method=cafe.cafeCategories")
+    fun getCafeCategories(@Field("id") id: String) : Call<ResponseCategory>
 }

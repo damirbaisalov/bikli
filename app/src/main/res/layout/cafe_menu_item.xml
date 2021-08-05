@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_fragment_cafe_info_category_text_view"
+    android:elevation="4dp"
+    android:padding="16dp"
+    android:weightSum="2"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Сырный BRO"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_medium"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Цена: 1400 Т"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_regular"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="В корзину"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_cafe_menu_to_cart_button"
+            android:fontFamily="@font/roboto_regular"
+            />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/product_image"
+        />
+
+</LinearLayout>
