@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:overScrollMode="never"
+    android:background="@color/bikli_background"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".main_window.user_fragment.presentation.UserSettings">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/activity_user_settings_toolbar"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="30dp"
+            android:padding="16dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:elevation="4dp"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/activity_user_settings_name_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_registration_name_text_view"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginHorizontal="4dp"
+                />
+
+            <EditText
+                android:id="@+id/activity_user_settings_name_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/activity_registration_name_edit_text"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:lines="1"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:backgroundTint="@color/bikli_status_bar"
+                android:textCursorDrawable="@color/bikli_status_bar"
+                android:autofillHints="name"
+                android:inputType="text"
+                />
+
+            <TextView
+                android:id="@+id/activity_settings_telephone_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_registration_phone_text_view"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="4dp"
+                />
+
+            <EditText
+                android:id="@+id/activity_settings_telephone_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="telephone_number"
+                android:hint="@string/activity_registration_phone_edit_text"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:lines="1"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:backgroundTint="@color/bikli_status_bar"
+                android:textCursorDrawable="@color/bikli_status_bar"
+                />
+
+            <TextView
+                android:id="@+id/activity_settings_address_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_registration_address_text_view"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="4dp"
+                />
+
+            <EditText
+                android:id="@+id/activity_settings_address_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="user_address"
+                android:hint="@string/activity_registration_address_edit_text"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:lines="1"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:backgroundTint="@color/bikli_status_bar"
+                android:textCursorDrawable="@color/bikli_status_bar"
+                />
+
+            <TextView
+                android:id="@+id/activity_settings_home_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_registration_home"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="4dp"
+                />
+
+            <EditText
+                android:id="@+id/activity_settings_home_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="user_home"
+                android:hint="@string/activity_registration_home"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:lines="1"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:backgroundTint="@color/bikli_status_bar"
+                android:textCursorDrawable="@color/bikli_status_bar"
+                />
+
+            <TextView
+                android:id="@+id/activity_settings_flat_num_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_registration_flat_text_view"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="4dp"
+                />
+
+            <EditText
+                android:id="@+id/activity_settings_flat_num_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="user_flat_number"
+                android:hint="@string/activity_registration_flat_edit_text"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:lines="1"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:backgroundTint="@color/bikli_status_bar"
+                android:textCursorDrawable="@color/bikli_status_bar"
+                />
+
+            <TextView
+                android:id="@+id/activity_settings_floor_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_registration_floor_text_view"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="4dp"
+                />
+
+            <EditText
+                android:id="@+id/activity_settings_flooredit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="user_floor"
+                android:hint="@string/activity_registration_floor_edit_text"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:lines="1"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:backgroundTint="@color/bikli_status_bar"
+                android:textCursorDrawable="@color/bikli_status_bar"
+                />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/activity_settings_save_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@drawable/bg_activity_settings_save_button"
+            android:layout_marginHorizontal="30dp"
+            android:textColor="@color/white"
+            android:elevation="4dp"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:layout_marginVertical="20dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Сохранить"
+            />
+
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

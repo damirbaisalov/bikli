@@ -1,8 +1,365 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bikli_background">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:overScrollMode="never"
+    android:fillViewport="true"
+    android:background="@color/bikli_background"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <include layout="@layout/fragment_user_toolbar"/>
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <include
+            android:id="@+id/user_toolbar"
+            layout="@layout/fragment_user_toolbar"/>
+
+        <LinearLayout
+            android:visibility="invisible"
+            android:id="@+id/fragment_user_linear_layout_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="center"
+                android:text="Зарегистрируйтесь и Вы получите 2500 баллов"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                />
+
+            <Button
+                android:id="@+id/fragment_user_reg_button"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginHorizontal="60dp"
+                android:layout_marginTop="20dp"
+                android:text="Регистрация"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:fontFamily="@font/roboto_medium"
+                android:background="@drawable/bg_fragment_user_reg_button"
+                />
+
+            <Button
+                android:id="@+id/fragment_user_auth_button"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginHorizontal="60dp"
+                android:layout_marginTop="12dp"
+                android:text="Авторизация"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:fontFamily="@font/roboto_medium"
+                android:background="@drawable/bg_fragment_user_reg_button"
+                android:layout_marginBottom="20dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="visible"
+            android:id="@+id/fragment_user_get_data_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginVertical="20dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_below="@id/user_toolbar">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_activity_main_window_toolbar_back_button"
+                android:padding="10dp"
+                >
+                <TextView
+                    android:id="@+id/user_cabinet_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Личный Кабинет"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/primary_bikli_orange"
+                    />
+                <TextView
+                    android:id="@+id/fragment_user_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Damir"
+                    android:textSize="18sp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/black"
+                    android:layout_below="@id/user_cabinet_text_view"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_user_fragment_logo"
+                    android:background="@drawable/bg_activity_registration_reg_button"
+                    android:layout_alignParentEnd="true"
+                    />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:weightSum="6"
+                android:background="@drawable/bg_activity_main_window_toolbar_back_button"
+                >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="Кэшбек"
+                    android:textSize="18sp"
+                    android:gravity="center_vertical"
+                    android:layout_weight="6"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/primary_bikli_orange"
+                    />
+
+                <TextView
+                    android:id="@+id/fragment_user_cashback"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:text="5%"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/roboto_medium"
+                    android:background="@drawable/bg_user_fragment_text_views"
+                    />
+
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:weightSum="6"
+                android:background="@drawable/bg_activity_main_window_toolbar_back_button"
+                >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="Баллы"
+                    android:gravity="center_vertical"
+                    android:textSize="18sp"
+                    android:layout_weight="6"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/primary_bikli_orange"
+                    />
+
+                <TextView
+                    android:id="@+id/fragment_user_balans"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end"
+                    android:text="2500"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/roboto_medium"
+                    android:background="@drawable/bg_user_fragment_text_views"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:src="@drawable/ic_outline_help"
+                    android:background="@drawable/bg_user_fragment_icons"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:text="Помощь"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:gravity="end|center"
+                    android:paddingEnd="20dp"
+                    android:layout_marginStart="3dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:background="@drawable/bg_fragment_user_list_buttons"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:src="@drawable/ic_user_fragment_about_us"
+                    android:background="@drawable/bg_user_fragment_icons"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:text="О нас"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:gravity="end|center"
+                    android:paddingEnd="20dp"
+                    android:layout_marginStart="3dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:background="@drawable/bg_fragment_user_list_buttons"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:src="@drawable/ic_user_fragment_person"
+                    android:background="@drawable/bg_user_fragment_icons"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="3dp"
+                    android:background="@drawable/bg_fragment_user_list_buttons"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="end|center"
+                    android:paddingEnd="20dp"
+                    android:text="Партнерство"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fragment_user_settings_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:src="@drawable/ic_user_fragment_settings"
+                    android:background="@drawable/bg_user_fragment_icons"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:text="Настройки"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:gravity="end|center"
+                    android:paddingEnd="20dp"
+                    android:layout_marginStart="3dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:background="@drawable/bg_fragment_user_list_buttons"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fragment_user_address_list_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:src="@drawable/ic_user_fragment_adress_list"
+                    android:background="@drawable/bg_user_fragment_icons"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="3dp"
+                    android:background="@drawable/bg_fragment_user_list_buttons"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="end|center"
+                    android:paddingEnd="20dp"
+                    android:text="Список адресов"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+</androidx.core.widget.NestedScrollView>

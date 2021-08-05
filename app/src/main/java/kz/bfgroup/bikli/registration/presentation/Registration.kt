@@ -1,24 +1,44 @@
 package kz.bfgroup.bikli.registration.presentation
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import kz.bfgroup.bikli.R
+import kz.bfgroup.bikli.data.ApiRetrofit
 import kz.bfgroup.bikli.main_window.presentation.MainWindow
+import kz.bfgroup.bikli.main_window.user_fragment.models.ResponseUserInfo
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
+const val MY_APP_REGISTRATION = "MY_APP_REGISTRATION"
+const val USER_TELEPHONE = "USER_TELEPHONE"
 class Registration: AppCompatActivity() {
 
     private lateinit var nextButton : Button
     private lateinit var switchCompat: SwitchCompat
     private lateinit var flatNumberTextView: TextView
     private lateinit var flatFloorTextView: TextView
+
+    private lateinit var userNameEditText: EditText
+    private lateinit var userPhoneNumberEditText: EditText
+    private lateinit var userAddressEditText: EditText
+    private lateinit var userHomeEditText: EditText
     private lateinit var flatNumberEditText: EditText
     private lateinit var flatFloorEditText: EditText
+
+    private lateinit var fields: Map<String,String>
+
+    private lateinit var registerButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +54,27 @@ class Registration: AppCompatActivity() {
             startActivity(Intent(this, MainWindow::class.java))
             finish()
         }
+
+        registerButton.setOnClickListener {
+            fields = mutableMapOf(
+                "phone_user" to userPhoneNumberEditText.text.toString(),
+                "name_user" to userNameEditText.text.toString(),
+                "adress_user" to userAddressEditText.text.toString(),
+                "apartment_user" to userHomeEditText.text.toString(),
+                "floor" to flatFloorEditText.text.toString(),
+                "street" to flatNumberEditText.text.toString()
+            )
+            saveTelephoneNumber(userPhoneNumberEditText.text.toString())
+            registerUser()
+//            Toast.makeText(this@Registration, fields.toString(), Toast.LENGTH_LONG).show()
+            val dialog = CodeDialogFragment()
+            dialog.show(supportFragmentManager, "codeDialog")
+        }
     }
 
     private fun bindViews() {
+
+        registerButton = findViewById(R.id.activity_registration_register_button)
 
         switchCompat = findViewById(R.id.activity_registration_switch_button)
         switchCompat.isChecked = true
@@ -49,6 +87,28 @@ class Registration: AppCompatActivity() {
         turnOffVisibility(flatNumberEditText)
         turnOffVisibility(flatNumberTextView)
         nextButton = findViewById(R.id.activity_registration_next_button)
+
+        userNameEditText = findViewById(R.id.activity_registration_name_edit_text)
+        userPhoneNumberEditText = findViewById(R.id.activity_registration_telephone_edit_text)
+        userAddressEditText = findViewById(R.id.activity_registration_address_edit_text)
+        userHomeEditText = findViewById(R.id.activity_registration_home_edit_text)
+    }
+
+    private fun registerUser() {
+        ApiRetrofit.getApiClient().registerUser(fields).enqueue(object : Callback<ResponseUserInfo> {
+            override fun onResponse(call: Call<ResponseUserInfo>, response: Response<ResponseUserInfo>) {
+                Log.d("user_info_response", response.body().toString())
+
+                if (response.isSuccessful) {
+//                    Toast.makeText(this@Registration, response.body().toString() + " OK OCCURRED", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseUserInfo>, t: Throwable) {
+                Log.d("user_info_failure", t.message.toString())
+//                Toast.makeText(this@Registration, t.message, Toast.LENGTH_LONG).show()
+            }
+        })
     }
 
     private fun homeOrFlat() {
@@ -76,5 +136,14 @@ class Registration: AppCompatActivity() {
 
     private fun turnOnVisibility(v : View) {
         v.visibility = View.VISIBLE
+    }
+
+    private fun saveTelephoneNumber(telephone: String) {
+        val sharedPref = this.getSharedPreferences(MY_APP_REGISTRATION, Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = sharedPref.edit()
+
+        editor.putString(USER_TELEPHONE, telephone)
+        editor.apply()
+
     }
 }

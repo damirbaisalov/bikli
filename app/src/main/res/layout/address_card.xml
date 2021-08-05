@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/address_card_linear_layout"
+    android:background="@drawable/bg_activity_main_window_toolbar_back_button">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingVertical="14dp"
+        android:paddingHorizontal="20dp"
+        android:gravity="start"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ул. "
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/address_card_address_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Кутузова"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=", Дом "
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/address_card_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="49"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_activity_address_forward_button"
+                android:layout_gravity="end"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGrey"
+        />
+
+</LinearLayout>
