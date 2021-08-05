@@ -14,7 +14,10 @@ import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.DateTimeFormatterBuilder
 import java.util.*
 
-class CafeViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+class CafeViewHolder(
+    itemView: View,
+    private val cafeClickListener: CafeClickListener
+): RecyclerView.ViewHolder(itemView) {
 
     private val cafeItemLayout: ConstraintLayout = itemView.findViewById(R.id.cafe_item_constraint_layout)
 
@@ -40,6 +43,9 @@ class CafeViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
             .load("http://bikli.kz/LogoCafe/" + cafeApiData.logo)
             .into(imageCafeImageView)
 
+        cafeItemLayout.setOnClickListener {
+            cafeClickListener.onCafeClick(cafeApiData.id)
+        }
 
 //      val formatter = DateTimeFormatter.ofPattern("yy-mm-dd HH:mm:ss")
 

@@ -50,7 +50,7 @@ class MainWindow : AppCompatActivity() {
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener {
         when(it.itemId){
-            R.id.item1 ->  {
+            R.id.item1 -> {
                 loadFragments(homeFragment)
                 return@OnNavigationItemSelectedListener true
             }
@@ -58,7 +58,7 @@ class MainWindow : AppCompatActivity() {
                 loadFragments(promotionFragment)
                 return@OnNavigationItemSelectedListener  true
             }
-            R.id.item3 ->{
+            R.id.item3 -> {
                 loadFragments(userFragment)
                 return@OnNavigationItemSelectedListener  true
             }
@@ -66,7 +66,7 @@ class MainWindow : AppCompatActivity() {
                 loadFragments(historyFragment)
                 return@OnNavigationItemSelectedListener  true
             }
-            R.id.item5 ->{
+            R.id.item5 -> {
                 loadFragments(cartFragment)
                 return@OnNavigationItemSelectedListener  true
             }

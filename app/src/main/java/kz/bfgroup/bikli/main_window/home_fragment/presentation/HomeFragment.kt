@@ -1,21 +1,29 @@
 package kz.bfgroup.bikli.main_window.home_fragment.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.facebook.shimmer.ShimmerFrameLayout
 import kz.bfgroup.bikli.R
 import kz.bfgroup.bikli.data.ApiRetrofit
+import kz.bfgroup.bikli.main_window.cart_fragment.presentation.CartFragment
+import kz.bfgroup.bikli.main_window.home_fragment.CafeInfoFragment
 import kz.bfgroup.bikli.main_window.home_fragment.models.CafeApiData
 import kz.bfgroup.bikli.main_window.home_fragment.models.ResponseCafeApiData
 import kz.bfgroup.bikli.main_window.home_fragment.presentation.view.CafeAdapter
+import kz.bfgroup.bikli.main_window.home_fragment.presentation.view.CafeClickListener
+import kz.bfgroup.bikli.main_window.user_fragment.presentation.UserAddressUpdate
+import kz.bfgroup.bikli.main_window.user_fragment.presentation.view.AddressClickListener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -35,6 +43,10 @@ class HomeFragment: Fragment() {
     private var searchingCafeList: List<CafeApiData> = listOf()
 
     private lateinit var shimmerFrameLayout: ShimmerFrameLayout
+    private lateinit var nestedScrollView: NestedScrollView
+
+    private lateinit var cafeInfoFragment: CafeInfoFragment
+    private lateinit var tuneImageButton: ImageButton
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,8 +72,14 @@ class HomeFragment: Fragment() {
 
         queryInSearchView()
 
+        tuneImageButton.setOnClickListener {
+            loadFragments(cafeInfoFragment)
+        }
+
+
         return viewHome
     }
+
 
     private fun initViews() {
 
@@ -69,12 +87,16 @@ class HomeFragment: Fragment() {
 
         recyclerView = viewHome.findViewById(R.id.home_fragment_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(viewHome.context, LinearLayoutManager.VERTICAL, false)
-        cafeAdapter = CafeAdapter()
+        cafeAdapter = CafeAdapter(getCafeClickListener())
         recyclerView.adapter = cafeAdapter
 
         searchView = viewHome.findViewById(R.id.home_fragment_search_view)
 
         shimmerFrameLayout = viewHome.findViewById(R.id.home_fragment_shimmer_layout)
+        nestedScrollView = viewHome.findViewById(R.id.fragment_home_nested_scroll)
+
+        tuneImageButton = viewHome.findViewById(R.id.home_fragment_tune_image_button)
+        cafeInfoFragment = CafeInfoFragment()
 
         bikliHelperOn = viewHome.findViewById(R.id.fragment_home_bikli_helper_linear_layout)
         bikliHelperOff = viewHome.findViewById(R.id.fragment_home_hand_help_linear_layout)
@@ -164,6 +186,23 @@ class HomeFragment: Fragment() {
         } else if (bikliHelperOff.visibility == View.GONE && bikliHelperOn.visibility == View.VISIBLE) {
             bikliHelperOff.visibility = View.VISIBLE
             bikliHelperOn.visibility = View.GONE
+        }
+    }
+
+    private fun loadFragments(fragment: Fragment) {
+        val fragmentTransaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.main_window_frame_layout, fragment)
+        fragmentTransaction.commit()
+    }
+
+    private fun getCafeClickListener(): CafeClickListener {
+        return object: CafeClickListener {
+            override fun onCafeClick(id: String?) {
+//                val intent = Intent(this@UserAddressList, UserAddressUpdate::class.java)
+//                intent.putExtra("address_id_for_update", id)
+//                startActivity(intent)
+                Toast.makeText(viewHome.context, id, Toast.LENGTH_LONG).show()
+            }
         }
     }
 
