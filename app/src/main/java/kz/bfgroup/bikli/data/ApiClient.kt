@@ -1,6 +1,7 @@
 package kz.bfgroup.bikli.data
 
 import kz.bfgroup.bikli.main_window.home_fragment.models.ResponseCafeApiData
+import kz.bfgroup.bikli.main_window.home_fragment.models.ResponseCafeMenu
 import kz.bfgroup.bikli.main_window.home_fragment.models.ResponseCategory
 import kz.bfgroup.bikli.main_window.promotion_fragment.models.ResponseApiData
 import kz.bfgroup.bikli.main_window.user_fragment.models.ResponseAddress
@@ -59,4 +60,8 @@ interface ApiClient {
     @FormUrlEncoded
     @POST("index.php?method=cafe.cafeCategories")
     fun getCafeCategories(@Field("id") id: String) : Call<ResponseCategory>
+
+    @FormUrlEncoded
+    @POST("index.php?method=cafe.cafeMenuCategoriesOrderByRating")
+    fun getCafeMenuByRating(@Field("id") id: String) : Call<ResponseCafeMenu>
 }
