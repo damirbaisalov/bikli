@@ -22,6 +22,18 @@ interface ApiClient {
     fun getCafesList(): Call<ResponseCafeApiData>
 
     @FormUrlEncoded
+    @POST("index.php?method=cafe.cafeCategories")
+    fun getCafeCategories(@Field("id") id: String) : Call<ResponseCategory>
+
+    @FormUrlEncoded
+    @POST("index.php?method=cafe.cafeMenuCategoriesOrderByRating")
+    fun getCafeMenuByRating(@Field("id") id: String) : Call<ResponseCafeMenu>
+
+    @FormUrlEncoded
+    @POST("index.php?method=cafe.cafeInfo")
+    fun getCafeInfo(@Field("id") id: String) : Call<ResponseBody>
+
+    @FormUrlEncoded
     @POST("index.php?method=user.send.sms")
     fun registerUser(@FieldMap fields: Map<String, String>) : Call<ResponseUserInfo>
 
@@ -57,15 +69,4 @@ interface ApiClient {
     @POST("index.php?method=user.adress.delete")
     fun userDeleteAddress(@Field("id") id: String) : Call<ResponseBody>
 
-    @FormUrlEncoded
-    @POST("index.php?method=cafe.cafeCategories")
-    fun getCafeCategories(@Field("id") id: String) : Call<ResponseCategory>
-
-    @FormUrlEncoded
-    @POST("index.php?method=cafe.cafeMenuCategoriesOrderByRating")
-    fun getCafeMenuByRating(@Field("id") id: String) : Call<ResponseCafeMenu>
-
-    @FormUrlEncoded
-    @POST("index.php?method=cafe.cafeInfo")
-    fun getCafeInfo(@Field("id") id: String) : Call<ResponseBody>
 }
