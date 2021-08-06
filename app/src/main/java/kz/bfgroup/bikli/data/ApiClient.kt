@@ -64,4 +64,8 @@ interface ApiClient {
     @FormUrlEncoded
     @POST("index.php?method=cafe.cafeMenuCategoriesOrderByRating")
     fun getCafeMenuByRating(@Field("id") id: String) : Call<ResponseCafeMenu>
+
+    @FormUrlEncoded
+    @POST("index.php?method=cafe.cafeInfo")
+    fun getCafeInfo(@Field("id") id: String) : Call<ResponseBody>
 }

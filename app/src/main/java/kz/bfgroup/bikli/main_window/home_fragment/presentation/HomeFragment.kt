@@ -1,6 +1,8 @@
 package kz.bfgroup.bikli.main_window.home_fragment.presentation
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -22,12 +24,16 @@ import kz.bfgroup.bikli.main_window.home_fragment.models.CafeApiData
 import kz.bfgroup.bikli.main_window.home_fragment.models.ResponseCafeApiData
 import kz.bfgroup.bikli.main_window.home_fragment.presentation.view.CafeAdapter
 import kz.bfgroup.bikli.main_window.home_fragment.presentation.view.CafeClickListener
+import kz.bfgroup.bikli.main_window.user_fragment.presentation.MY_APP_USER_FRAGMENT
+import kz.bfgroup.bikli.main_window.user_fragment.presentation.USER_ID
 import kz.bfgroup.bikli.main_window.user_fragment.presentation.UserAddressUpdate
 import kz.bfgroup.bikli.main_window.user_fragment.presentation.view.AddressClickListener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+const val MY_APP_HOME_FRAGMENT = "MY_APP_HOME_FRAGMENT"
+const val CAFE_ID = "CAFE_ID"
 class HomeFragment: Fragment() {
 
     private lateinit var viewHome: View
@@ -198,12 +204,20 @@ class HomeFragment: Fragment() {
     private fun getCafeClickListener(): CafeClickListener {
         return object: CafeClickListener {
             override fun onCafeClick(id: String?) {
-//                val intent = Intent(this@UserAddressList, UserAddressUpdate::class.java)
-//                intent.putExtra("address_id_for_update", id)
-//                startActivity(intent)
                 Toast.makeText(viewHome.context, id, Toast.LENGTH_LONG).show()
+                saveCafeId(id)
+                loadFragments(cafeInfoFragment)
             }
         }
+    }
+
+    private fun saveCafeId(cafeId: String?) {
+        val sharedPref = viewHome.context.getSharedPreferences(MY_APP_HOME_FRAGMENT, Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = sharedPref.edit()
+
+        editor.putString(CAFE_ID, cafeId)
+        editor.apply()
+
     }
 
     override fun onResume() {
