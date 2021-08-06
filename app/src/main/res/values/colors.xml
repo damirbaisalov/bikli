@@ -20,4 +20,5 @@
     <color name="save_button">#4CD964</color>
     <color name="delete_button">#FF3B30</color>
     <color name="ok_button_color">#2787F1</color>
+    <color name="count_cart_bottom_layout_color">#AF7531</color>
 </resources>
