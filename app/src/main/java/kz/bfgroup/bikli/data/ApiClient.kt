@@ -34,6 +34,10 @@ interface ApiClient {
     fun getCafeInfo(@Field("id") id: String) : Call<ResponseBody>
 
     @FormUrlEncoded
+    @POST("index.php?method=product.get.info")
+    fun getProductInfo(@Field("id") id: String) : Call<ResponseBody>
+
+    @FormUrlEncoded
     @POST("index.php?method=user.send.sms")
     fun registerUser(@FieldMap fields: Map<String, String>) : Call<ResponseUserInfo>
 
@@ -68,5 +72,6 @@ interface ApiClient {
     @FormUrlEncoded
     @POST("index.php?method=user.adress.delete")
     fun userDeleteAddress(@Field("id") id: String) : Call<ResponseBody>
+
 
 }

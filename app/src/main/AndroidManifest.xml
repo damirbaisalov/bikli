@@ -24,12 +24,11 @@
         <activity
             android:name=".main_window.presentation.MainWindow"
             android:windowSoftInputMode="stateAlwaysHidden|adjustNothing" />
-
         <activity android:name=".main_window.user_fragment.presentation.UserSettings" />
         <activity android:name=".main_window.user_fragment.presentation.UserAddressList" />
         <activity android:name=".main_window.user_fragment.presentation.UserAddAddress" />
-        <activity android:name=".main_window.user_fragment.presentation.UserAddressUpdate"/>
-
+        <activity android:name=".main_window.user_fragment.presentation.UserAddressUpdate" />
+        <activity android:name=".main_window.home_fragment.ProductInfoActivity" />
     </application>
 
 </manifest>
