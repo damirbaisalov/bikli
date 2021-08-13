@@ -9,7 +9,10 @@ import com.bumptech.glide.Glide
 import kz.bfgroup.bikli.R
 import kz.bfgroup.bikli.main_window.home_fragment.models.CafeMenuApiData
 
-class CafeMenuViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+class CafeMenuViewHolder(
+    itemView: View,
+    private val productClickListener: ProductClickListener
+): RecyclerView.ViewHolder(itemView) {
 
     private val menuItemConstraintLayout: ConstraintLayout = itemView.findViewById(R.id.menu_item_layout)
     private val menuNameEdaTextView: TextView = itemView.findViewById(R.id.menu_name_eda)
@@ -26,5 +29,9 @@ class CafeMenuViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
             .with(itemView.context)
             .load("http://bikli.kz/imgProduct/" + cafeMenuApiData.image)
             .into(menuImageImageView)
+
+        menuImageImageView.setOnClickListener {
+            productClickListener.onProductClick(cafeMenuApiData.id)
+        }
     }
 }

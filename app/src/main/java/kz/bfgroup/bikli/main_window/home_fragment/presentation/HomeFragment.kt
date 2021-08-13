@@ -53,6 +53,7 @@ class HomeFragment: Fragment() {
 
     private lateinit var cafeInfoFragment: CafeInfoFragment
     private lateinit var tuneImageButton: ImageButton
+    private val bundleData = Bundle()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -205,7 +206,9 @@ class HomeFragment: Fragment() {
         return object: CafeClickListener {
             override fun onCafeClick(id: String?) {
                 Toast.makeText(viewHome.context, id, Toast.LENGTH_LONG).show()
-                saveCafeId(id)
+                bundleData.putString("cafe_id", id)
+//                saveCafeId(id)
+                cafeInfoFragment.arguments = bundleData
                 loadFragments(cafeInfoFragment)
             }
         }

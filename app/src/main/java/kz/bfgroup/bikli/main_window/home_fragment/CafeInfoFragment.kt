@@ -1,6 +1,7 @@
 package kz.bfgroup.bikli.main_window.home_fragment
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -20,7 +22,9 @@ import kz.bfgroup.bikli.main_window.home_fragment.models.*
 import kz.bfgroup.bikli.main_window.home_fragment.presentation.CAFE_ID
 import kz.bfgroup.bikli.main_window.home_fragment.presentation.MY_APP_HOME_FRAGMENT
 import kz.bfgroup.bikli.main_window.home_fragment.presentation.view.CafeCategoryAdapter
+import kz.bfgroup.bikli.main_window.home_fragment.presentation.view.CafeClickListener
 import kz.bfgroup.bikli.main_window.home_fragment.presentation.view.CafeMenuAdapter
+import kz.bfgroup.bikli.main_window.home_fragment.presentation.view.ProductClickListener
 import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.Call
@@ -40,6 +44,8 @@ class CafeInfoFragment: Fragment() {
     private lateinit var cafeInfoMinSumTextView: TextView
     private lateinit var cafeInfoDeliveryTimeTextView: TextView
     private lateinit var cafeInfoDeliveryCostTextView: TextView
+
+    private lateinit var bundleData: Bundle
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -64,7 +70,7 @@ class CafeInfoFragment: Fragment() {
 
         cafeMenuRecyclerView = rootView.findViewById(R.id.recyclerview_menu_list)
         cafeMenuRecyclerView.layoutManager = LinearLayoutManager(rootView.context, LinearLayoutManager.VERTICAL, false)
-        cafeMenuAdapter = CafeMenuAdapter()
+        cafeMenuAdapter = CafeMenuAdapter(getProductClickListener())
         cafeMenuRecyclerView.adapter = cafeMenuAdapter
 
         cafeInfoNameTextView = rootView.findViewById(R.id.cafe_info_name)
@@ -72,10 +78,11 @@ class CafeInfoFragment: Fragment() {
         cafeInfoMinSumTextView = rootView.findViewById(R.id.cafe_info_min_sum)
         cafeInfoDeliveryTimeTextView = rootView.findViewById(R.id.cafe_info_delivery_time)
         cafeInfoDeliveryCostTextView = rootView.findViewById(R.id.cafe_info_delivery_cost)
+
     }
 
     private fun loadCafeInfo() {
-        ApiRetrofit.getApiClient().getCafeInfo(getSavedCafeId()).enqueue(object : Callback<ResponseBody> {
+        ApiRetrofit.getApiClient().getCafeInfo(arguments?.getString("cafe_id").toString()).enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 Log.d("cafe_info", response.toString())
 
@@ -118,7 +125,7 @@ class CafeInfoFragment: Fragment() {
     }
 
     private fun parseCafeInfoResponseBodyJsonObject(cafeInfoResponseBodyJSONObject: JSONObject): CafeInfoResponseBody {
-        val responseBodyJsonObject = (cafeInfoResponseBodyJSONObject.get(getSavedCafeId()) as? JSONObject)
+        val responseBodyJsonObject = (cafeInfoResponseBodyJSONObject.get(arguments?.getString("cafe_id").toString()) as? JSONObject)
         var cafeInfoApiData : CafeInfoApiData?=null
 
         responseBodyJsonObject?.let {
@@ -147,7 +154,7 @@ class CafeInfoFragment: Fragment() {
     }
 
     private fun loadCategoryListData() {
-        ApiRetrofit.getApiClient().getCafeCategories(getSavedCafeId()).enqueue(object : Callback<ResponseCategory> {
+        ApiRetrofit.getApiClient().getCafeCategories(arguments?.getString("cafe_id").toString()).enqueue(object : Callback<ResponseCategory> {
             override fun onResponse(call: Call<ResponseCategory>, response: Response<ResponseCategory>) {
                 Log.d("category_list", response.body()!!.response.toString())
                 Log.d("category", response.body()!!.toString())
@@ -172,7 +179,7 @@ class CafeInfoFragment: Fragment() {
     }
 
     private fun loadMenuListData() {
-        ApiRetrofit.getApiClient().getCafeMenuByRating(getSavedCafeId()).enqueue(object : Callback<ResponseCafeMenu> {
+        ApiRetrofit.getApiClient().getCafeMenuByRating(arguments?.getString("cafe_id").toString()).enqueue(object : Callback<ResponseCafeMenu> {
             override fun onResponse(call: Call<ResponseCafeMenu>, response: Response<ResponseCafeMenu>) {
                 Log.d("menu_list", response.body()!!.response.toString())
                 Log.d("menu", response.body()!!.toString())
@@ -196,13 +203,24 @@ class CafeInfoFragment: Fragment() {
         })
     }
 
-    private fun getSavedCafeId(): String {
-        val sharedPreferences: SharedPreferences = rootView.context.getSharedPreferences(
-            MY_APP_HOME_FRAGMENT,
-            Context.MODE_PRIVATE
-        )
+//    private fun getSavedCafeId(): String {
+//        val sharedPreferences: SharedPreferences = rootView.context.getSharedPreferences(
+//            MY_APP_HOME_FRAGMENT,
+//            Context.MODE_PRIVATE
+//        )
+//
+//        return sharedPreferences.getString(CAFE_ID, "default") ?: "default"
+//    }
 
-        return sharedPreferences.getString(CAFE_ID, "default") ?: "default"
+    private fun getProductClickListener(): ProductClickListener {
+        return object : ProductClickListener {
+            override fun onProductClick(id: String?) {
+                Toast.makeText(rootView.context, id, Toast.LENGTH_LONG).show()
+                val intent = Intent(rootView.context, ProductInfoActivity::class.java)
+                intent.putExtra("product_id", id)
+                startActivity(intent)
+            }
+        }
     }
 
 }

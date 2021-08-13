@@ -7,12 +7,15 @@
 
 
         <ImageView
+            android:id="@+id/activity_product_info_back_image_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_back_button"
+            android:background="@drawable/bg_ripple_effect_general"
             />
 
         <TextView
+            android:id="@+id/activity_product_info_toolbar_product_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Пицца Ассорти (30см.)"

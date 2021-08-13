@@ -6,12 +6,17 @@ import androidx.recyclerview.widget.RecyclerView
 import kz.bfgroup.bikli.R
 import kz.bfgroup.bikli.main_window.home_fragment.models.CafeMenuApiData
 
-class CafeMenuAdapter: RecyclerView.Adapter<CafeMenuViewHolder>() {
+class CafeMenuAdapter(
+    private val productClickListener: ProductClickListener
+): RecyclerView.Adapter<CafeMenuViewHolder>() {
 
     private var dataList: MutableList<CafeMenuApiData> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CafeMenuViewHolder {
-        return CafeMenuViewHolder(View.inflate(parent.context, R.layout.cafe_menu_item_list, null))
+        return CafeMenuViewHolder(
+            View.inflate(parent.context, R.layout.cafe_menu_item_list, null),
+            productClickListener
+        )
     }
 
     override fun onBindViewHolder(holder: CafeMenuViewHolder, position: Int) {

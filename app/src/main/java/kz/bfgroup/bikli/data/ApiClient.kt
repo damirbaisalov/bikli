@@ -3,6 +3,7 @@ package kz.bfgroup.bikli.data
 import kz.bfgroup.bikli.main_window.home_fragment.models.ResponseCafeApiData
 import kz.bfgroup.bikli.main_window.home_fragment.models.ResponseCafeMenu
 import kz.bfgroup.bikli.main_window.home_fragment.models.ResponseCategory
+import kz.bfgroup.bikli.main_window.home_fragment.models.ResponseProduct
 import kz.bfgroup.bikli.main_window.promotion_fragment.models.ResponseApiData
 import kz.bfgroup.bikli.main_window.user_fragment.models.ResponseAddress
 import kz.bfgroup.bikli.main_window.user_fragment.models.ResponseAddressUpdate
@@ -35,7 +36,7 @@ interface ApiClient {
 
     @FormUrlEncoded
     @POST("index.php?method=product.get.info")
-    fun getProductInfo(@Field("id") id: String) : Call<ResponseBody>
+    fun getProductInfo(@Field("product_id") id: String) : Call<ResponseProduct>
 
     @FormUrlEncoded
     @POST("index.php?method=user.send.sms")
